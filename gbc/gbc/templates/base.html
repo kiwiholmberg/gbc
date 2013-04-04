@@ -67,36 +67,18 @@
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
       <div class="carousel-inner">
-        <div class="item active">
-          <img src="{{ STATIC_URL }}img/examples/slide-01.jpg" alt="">
+        {% for slide in slides %}
+        <div class="item {% if forloop.first %}active{% endif %}">
+          <img src="{{ slide.image.url }}" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>Fågelresor på riktigt</h1>
-              <p class="lead">100 kryss på en vecka, är det möjligt? Sven Svensson berättar om sina äventyr i Mikronesien.</p>
+              <h1>{{ slide.title }}</h1>
+              <p class="lead">{{ slide.content }}</p>
               <a class="btn btn-large btn-primary" href="#">Läs mer</a>
             </div>
           </div>
         </div>
-        <div class="item">
-          <img src="{{ STATIC_URL }}img/examples/slide-02.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>Att fånga en fågel</h1>
-              <p class="lead">Att ringmärka fåglar kan ge värdefull information om fåglarnas liv. Men hur fångar man en fågel utan att skada den? Jenny Ring berättar om de senaste teknikerna för att få fågeln i ditt nät. </p>
-              <a class="btn btn-large btn-primary" href="#">Läs mer</a>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <img src="{{ STATIC_URL }}img/examples/slide-03.jpg" alt="">
-          <div class="container">
-            <div class="carousel-caption">
-              <h1>"Makakerna tog min tub!"</h1>
-              <p class="lead">Att kryssa i regnskogen är en riktig utmaning. Blodiglar och smala bergsvägar sinkar dig på väg mot kryssen du verkligen vill ha. Jan Ehnbom tar oss med på en resa genom indiens djungel.</p>
-              <a class="btn btn-large btn-primary" href="#">Läs mer</a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
       <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
