@@ -258,9 +258,10 @@ a:focus {
 }
 
 .img-circle {
-  -webkit-border-radius: 500px;
-     -moz-border-radius: 500px;
-          border-radius: 500px;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  margin-top: 10px;
 }
 
 .row {
@@ -326,6 +327,7 @@ a:focus {
 
 .span4 {
   width: 300px;
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
 }
 
 .span3 {

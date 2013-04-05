@@ -121,7 +121,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    'django.contrib.staticfiles',    
+    'django.contrib.staticfiles',
+    'grappelli',    
     'django.contrib.admin',
      'core',
     # Uncomment the next line to enable admin documentation:
