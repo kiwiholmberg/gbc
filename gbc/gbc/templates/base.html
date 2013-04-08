@@ -1,3 +1,4 @@
+{% load thumbnail %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -69,7 +70,7 @@
       <div class="carousel-inner">
         {% for slide in slides %}
         <div class="item {% if forloop.first %}active{% endif %}">
-          <img src="{{ slide.image.url }}" alt="">
+          <img src="{{ slide.image|thumbnail_url:'slide' }}" alt="">
           <div class="container">
             <div class="carousel-caption">
               <h1>{{ slide.title }}</h1>

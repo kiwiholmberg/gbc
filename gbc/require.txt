@@ -1,1 +1,2 @@
-django-resized
+
+easy_thumbnails

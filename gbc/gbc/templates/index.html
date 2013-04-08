@@ -1,58 +1,32 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 
 {% block main %}
 <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
       <div class="row">
+        {% for tile in tiles %}
         <div class="span4">
-          <img class="img-circle" src="http://instasrc.com/350x150/nature">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
+          <img class="img-circle" src="{{ tile.image|thumbnail_url:'tile' }}">
+          <h2>{{ tile.title }}</h2>
+          <p>{{ tile.content }}</p>
+          <p><a class="btn" href="{{ tile.link }}">View details &raquo;</a></p>
         </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" src="http://instasrc.com/350x150/botanical">
-          <h2>Heading</h2>
-          <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
-        <div class="span4">
-          <img class="img-circle" src="http://instasrc.com/350x150/animal">
-          <h2>Heading</h2>
-          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-          <p><a class="btn" href="#">View details &raquo;</a></p>
-        </div><!-- /.span4 -->
+        {% endfor %}
       </div><!-- /.row -->
 
 
       <!-- START THE FEATURETTES -->
 
       <hr class="featurette-divider">
-
+      {% for featurette in featurettes %}
       <div class="featurette">
-        <img class="featurette-image pull-right" src="http://instasrc.com/512x512/botanical">
-        <h2 class="featurette-heading">First featurette headling. <span class="muted">It'll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <img class="featurette-image {% if forloop.counter|divisibleby:"2" %}pull-left{% else %}pull-right{% endif %}" src="{{ featurette.image|thumbnail_url:'featurette' }}">
+        <h2 class="featurette-heading">{{ featurette.title }} <span class="muted">{{ featurette.subtitle }}</span></h2>
+        <p class="lead">{{ featurette.content }}</p>
       </div>
-
       <hr class="featurette-divider">
-
-      <div class="featurette">
-        <img class="featurette-image pull-left" src="http://instasrc.com/512x512/nature">
-        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-
-      <hr class="featurette-divider">
-
-      <div class="featurette">
-        <img class="featurette-image pull-right" src="http://instasrc.com/512x512/animal">
-        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-      </div>
-
-      <hr class="featurette-divider">
-
+      {% endfor %}
       <!-- /END THE FEATURETTES -->
 {% endblock %}
