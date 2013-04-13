@@ -25,7 +25,7 @@ class Featurette(models.Model):
     title = models.CharField(max_length=256)
     subtitle = models.CharField(max_length=256)
     content = models.TextField(max_length=512)
-    image = models.ImageField(upload_to='tiles', help_text='Dimensions: 512x512px')
+    image = models.ImageField(upload_to='featurettes', help_text='Dimensions: 512x512px')
     link = models.CharField(max_length=256, help_text='ie. "http://gbc.se/event/1" or just "/event/1"')
 
     def __unicode__(self):

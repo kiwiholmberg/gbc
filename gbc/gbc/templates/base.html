@@ -48,10 +48,14 @@
             <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
             <div class="nav-collapse collapse">
               <ul class="nav">
-                <li class="active"><a href="#">Hem</a></li>
-                <li><a href="#program">Program</a></li>
-                <li><a href="#program">Bokning</a></li>
-                <li><a href="#contact">Kontakt</a></li>
+                {% for item in menu_items %}
+                  {% if foorloop.first %}
+                <li class="active"><a href="{{ item.link }}" title="{{ item.mouseover }}">{{ item.label }}</a></li>
+                  {% else %}
+                <li><a href="{{ item.link }}" title="{{ item.mosuseover }}">{{ item.label }}</a></li>
+                  {% endif %}
+                {% endfor %}
+
                 <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
               
               </ul>
