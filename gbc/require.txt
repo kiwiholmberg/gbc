@@ -1,2 +1,2 @@
-
+django-admin-tools
 easy_thumbnails
