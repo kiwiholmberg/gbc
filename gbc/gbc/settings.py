@@ -2,6 +2,7 @@
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+THUMBNAIL_DEBUG = True
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -141,7 +142,7 @@ INSTALLED_APPS = (
     'admin_tools.menu',
     'admin_tools.dashboard',    
     'django.contrib.admin',
-     'core',
+    'core',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )

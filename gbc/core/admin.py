@@ -2,6 +2,10 @@ from core.models import *
 from django.contrib import admin
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.db import models 
+
+
+
 
 
 admin.site.register(Slide)
