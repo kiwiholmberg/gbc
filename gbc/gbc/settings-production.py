@@ -2,7 +2,6 @@
 
 DEBUG = False
 #TEMPLATE_DEBUG = DEBUG
-THUMBNAIL_DEBUG = False
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -13,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'gbc_db',                      # Or path to database file if using sqlite3.
+        'NAME': '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc/gbc/db/gbc_db',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
         'USER': '',
         'PASSWORD': '',
@@ -51,7 +50,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = '/Users/kiwi/Dev/Priv/GBC/gbc/gbc/media/'
+MEDIA_ROOT = '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc/gbc/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -62,7 +61,7 @@ MEDIA_URL = 'media/'
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = '/static/'
+STATIC_ROOT = '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc/gbc/static'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -70,7 +69,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/Users/kiwi/Dev/Priv/GBC/gbc/gbc/static/',
+    '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc/gbc/gbc/static',
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -85,7 +84,7 @@ STATICFILES_FINDERS = (
 )
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'vg=r)(u$pdhvq^z=kl(i%#$ga=@tna=4a33hh(1u0+p*!ur+fb'
+SECRET_KEY = 'ads4+j1ay+)tl!q2flzx_7@1@)a82wb^hf_4j(-(28ymdmv-h=09-'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -114,7 +113,7 @@ ROOT_URLCONF = 'gbc.urls'
 WSGI_APPLICATION = 'gbc.wsgi.application'
 
 TEMPLATE_DIRS = (
-    'gbc/templates'
+    '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc/gbc/gbc/templates'
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -142,7 +141,7 @@ INSTALLED_APPS = (
     'admin_tools.menu',
     'admin_tools.dashboard',    
     'django.contrib.admin',
-    'core',
+     'core',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
