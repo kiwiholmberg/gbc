@@ -1,6 +1,7 @@
 from fabric.api import *
 
 env.use_ssh_config = False
+import time
 
 # Hosts to deploy onto
 env.hosts = ['kiwifoto.se']
@@ -14,8 +15,10 @@ env.repo = 'https://github.com/kiwiholmberg/gbc.git'
 
 def deploy(sql='no'):
     git_pull()
+    settings()
     collect_static()
     if sql == 'yes':
+        print 'Running sql script'
         db_changes()
     restart_server()
 
@@ -33,7 +36,10 @@ def git_pull():
 
 def db_changes():
     with cd(env.project_root):
-        run('$NOW = date')
-        run('cp db/gbc_db db/gbc_db_$NOW') #backup
-        run('sqlite3 db/gbc_db < change.sql')
+        run('cp gbc/db/gbc_db gbc/db/gbc_db_'+str(time.time())) #backup
+        run('sqlite3 gbc/db/gbc_db < gbc/change.sql')
 
+def settings():
+    with cd(env.project_root):
+        run('mv gbc/gbc/settings.py gbc/gbc/settings'+ str(time.time()) + '.py')
+        run('cp gbc/gbc/settings-production.py gbc/gbc/settings.py')
