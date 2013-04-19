@@ -12,9 +12,11 @@ env.project_root = '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc'
 
 env.repo = 'https://github.com/kiwiholmberg/gbc.git'
 
-def deploy():
+def deploy(sql='no'):
     git_pull()
     collect_static()
+    if sql == 'yes':
+        db_changes()
     restart_server()
 
 def collect_static():
@@ -28,3 +30,10 @@ def restart_server():
 def git_pull():
     with cd(env.project_root):
         run('git pull %s' % env.repo)
+
+def db_changes():
+    with cd(env.project_root):
+        run('$NOW = date')
+        run('cp db/gbc_db db/gbc_db_$NOW') #backup
+        run('sqlite3 db/gbc_db < change.sql')
+
