@@ -8,11 +8,15 @@
       <div class="row">
         {% for tile in tiles %}
         <div class="span4">
-          <img class="img-circle" src="{{ tile.image|thumbnail_url:'tile' }}">
+          {% if tile.image_format == 'R' %}
+            <img class="img-rectangle" src="{{ tile.image|thumbnail_url:'tile-rectangle' }}">
+          {% else %}
+            <img class="img-circle" src="{{ tile.image|thumbnail_url:'tile-circle' }}">
+          {% endif %}
           <h2>{{ tile.title }}</h2>
           <p>{{ tile.content|linebreaksbr }}</p>
           {% if tile.link != '' and tile.link != '#' %}
-          <p><a class="btn" href="{{ tile.link }}">Läs mer &raquo;</a></p>
+          <p><a class="btn" href="{{ tile.link }}">{% if tile.link_text %}{{ tile.link_text }}{% else %}Läs mer{% endif %} &raquo;</a></p>
           {% endif %}
         </div><!-- /.span4 -->
         {% endfor %}

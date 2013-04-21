@@ -30,47 +30,14 @@
 
 
 
-    <!-- NAVBAR
-    ================================================== -->
-    <div class="navbar-wrapper">
-      <!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
-      <div class="container">
-
-        <div class="navbar navbar-inverse">
-          <div class="navbar-inner">
-            <!-- Responsive Navbar Part 1: Button for triggering responsive navbar (not covered in tutorial). Include responsive CSS to utilize. -->
-            <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="brand" href="#">GBC</a>
-            <!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
-            <div class="nav-collapse collapse">
-              <ul class="nav">
-                {% for item in menu_items %}
-                  {% if foorloop.first %}
-                <li class="active"><a href="{{ item.link }}" title="{{ item.mouseover }}">{{ item.label }}</a></li>
-                  {% else %}
-                <li><a href="{{ item.link }}" title="{{ item.mosuseover }}">{{ item.label }}</a></li>
-                  {% endif %}
-                {% endfor %}
-
-                <!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
-              
-              </ul>
-            </div><!--/.nav-collapse -->
-          </div><!-- /.navbar-inner -->
-        </div><!-- /.navbar -->
-
-      </div> <!-- /.container -->
-    </div><!-- /.navbar-wrapper -->
+    
 
 
 
     <!-- Carousel
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
+      <h1 class="main-title">Gobal Birding Conference</h1>
       <div class="carousel-inner">
         {% for slide in slides %}
         <div class="item {% if forloop.first %}active{% endif %}">
@@ -80,7 +47,11 @@
               <h1>{{ slide.title }}</h1>
               <p class="lead">{{ slide.content|linebreaksbr|urlize }}</p>
               {% if slide.link != '' and slide.link != '#' %}
-              <a class="btn btn-large btn-primary" href="{{ slide.link }}">Läs mer</a>
+                {% if slide.link_text %}
+                  <a class="btn btn-large btn-primary" href="{{ slide.link }}">{{ slide.link_text }}</a>
+                {% else %}
+                  <a class="btn btn-large btn-primary" href="{{ slide.link }}">Läs mer</a>
+                {% endif %}
               {% endif %}
             </div>
           </div>

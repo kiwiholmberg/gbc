@@ -123,7 +123,8 @@ TEMPLATE_DIRS = (
 THUMBNAIL_ALIASES = {
     '': {
         'slide': {'size': (1280, 500), 'crop': True},
-        'tile': {'size': (360, 150), 'crop': True},
+        'tile-rectangle': {'size': (360, 150), 'crop': True},
+        'tile-circle': {'size': (140, 140), 'crop': True},
         'featurette': {'size': (512, 512), 'crop': True},
     },
 }
