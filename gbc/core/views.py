@@ -8,9 +8,12 @@ def home(request):
     tiles = Tile.objects.all()
     menu_items = Menu_item.objects.all()
     featurettes = Featurette.objects.all()
+
+    lang = request.COOKIES.get('language', 'sv')
     return render(request, 'index.html', {  'STATIC_URL': settings.STATIC_URL, 
-                                            'slides':slides,
+                                            'slides': slides,
                                             'tiles': tiles, 
-                                            'menu_items':menu_items, 
-                                            'featurettes': featurettes 
+                                            'menu_items': menu_items, 
+                                            'featurettes': featurettes,
+                                            'lang': lang
                                         })

@@ -6171,3 +6171,21 @@ a.badge:focus {
 .affix {
   position: fixed;
 }
+.language-selector {
+  position: absolute;
+  z-index: 11;
+  right: 20px;
+  top: 5px;
+  width: 75px;
+  height: 32px;
+}
+.language-selector a {
+  cursor: pointer;
+  float: left;
+  margin-right: 5px;
+}
+.language-selector a img {
+  height: 32px;
+  width: 32px;
+  position: relative;
+}

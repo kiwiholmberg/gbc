@@ -13,10 +13,23 @@
           {% else %}
             <img class="img-circle" src="{{ tile.image|thumbnail_url:'tile-circle' }}">
           {% endif %}
-          <h2>{{ tile.title }}</h2>
-          <p>{{ tile.content|linebreaksbr }}</p>
-          {% if tile.link != '' and tile.link != '#' %}
-          <p><a class="btn" href="{{ tile.link }}">{% if tile.link_text %}{{ tile.link_text }}{% else %}Läs mer{% endif %} &raquo;</a></p>
+          <h2>{%if lang == 'en'%}{{ tile.title_en }} {% else %}{{ tile.title_sv }}{%endif%}</h2>
+          <p>{%if lang == 'en'%}{{ tile.content_en|linebreaksbr }} {% else %}{{ tile.content_sv|linebreaksbr}}{%endif%}</p>
+          {% if tile.link != '' and tile.link != '#' or tile.link_file %}
+          <p><a class="btn" href="{% if tile.link_file %}{{ tile.link_file.url }}{% else %}{{ tile.link }}{% endif %}">
+            {% if lang == 'en' %}
+              {% if tile.link_text_en %}
+                {{ tile.link_text_en }}
+              {% else %}
+                Read more
+              {% endif %} &raquo;</a></p>
+            {% else %}
+              {% if tile.link_text_sv %}
+                {{ tile.link_text_sv }}
+              {% else %}
+                Läs mer
+              {% endif %} &raquo;</a></p>
+            {% endif %}
           {% endif %}
         </div><!-- /.span4 -->
         {% endfor %}
@@ -29,8 +42,14 @@
       {% for featurette in featurettes %}
       <div class="featurette">
         <img class="featurette-image {% if forloop.counter|divisibleby:"2" %}pull-left{% else %}pull-right{% endif %}" src="{{ featurette.image|thumbnail_url:'featurette' }}">
-        <h2 class="featurette-heading">{{ featurette.title }} <span class="muted">{{ featurette.subtitle }}</span></h2>
-        <p class="lead">{{ featurette.content|linebreaksbr|urlize }}</p>
+        <h2 class="featurette-heading">
+          {% if lang == 'en' %}
+            {{ featurette.title_en }} <span class="muted">{{ featurette.subtitle_en }}</span></h2>
+            <p class="lead">{{ featurette.content_en|linebreaksbr|urlize }}</p>
+          {% else %}
+            {{ featurette.title_sv }} <span class="muted">{{ featurette.subtitle_sv }}</span></h2>
+            <p class="lead">{{ featurette.content_sv|linebreaksbr|urlize }}</p>
+          {% endif %}
       </div>
       <hr class="featurette-divider">
       {% endfor %}

@@ -38,19 +38,31 @@
     ================================================== -->
     <div id="myCarousel" class="carousel slide">
       <h1 class="main-title">Global Birding Conference</h1>
+      <div class="language-selector">
+        <a href="#" title="Svenska" data="sv"><img src="{{ STATIC_URL }}img/flag_sv.png"></a>
+        <a href="#" title="English" data="en"><img src="{{ STATIC_URL }}img/flag_en.png"></a>
+      </div>
       <div class="carousel-inner">
         {% for slide in slides %}
         <div class="item {% if forloop.first %}active{% endif %}">
           <img src="{{ slide.image|thumbnail_url:'slide' }}" alt="">
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{ slide.title }}</h1>
-              <p class="lead">{{ slide.content|linebreaksbr|urlize }}</p>
+              <h1>{%if lang == 'en'%}{{ slide.title_en }} {% else %}{{ slide.title_sv }}{%endif%}</h1>
+              <p class="lead">{%if lang == 'en'%}{{ slide.content_en|linebreaksbr|urlize }} {% else %}{{ slide.content_sv|linebreaksbr|urlize }}{%endif%}</p>
               {% if slide.link != '' and slide.link != '#' %}
-                {% if slide.link_text %}
-                  <a class="btn btn-large btn-primary" href="{{ slide.link }}">{{ slide.link_text }}</a>
+                {% if lang == 'en' %}
+                  {% if slide.link_text_en %}
+                    <a class="btn btn-large btn-primary" href="{{ slide.link }}">{{ slide.link_text_en }}</a>
+                  {% else %}
+                    <a class="btn btn-large btn-primary" href="{{ slide.link }}">Read more</a>
+                  {% endif %}
                 {% else %}
-                  <a class="btn btn-large btn-primary" href="{{ slide.link }}">Läs mer</a>
+                  {% if slide.link_text_sv %}
+                    <a class="btn btn-large btn-primary" href="{{ slide.link }}">{{ slide.link_text_sv }}</a>
+                  {% else %}
+                    <a class="btn btn-large btn-primary" href="{{ slide.link }}">Läs mer</a>
+                  {% endif %}
                 {% endif %}
               {% endif %}
             </div>
@@ -65,7 +77,7 @@
 
       <!-- FOOTER -->
       <footer>
-        <p class="pull-right"><a href="#">Till toppen</a></p>
+        <p class="pull-right"><a href="#">{% if lang == 'en' %}To the top{% else %}Till toppen{% endif %}</a></p>
         <p>&copy; 2013 Global Birding Conference</p>
       </footer>
 
@@ -89,6 +101,7 @@
     <script src="{{ STATIC_URL }}js/bootstrap-collapse.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap-carousel.js"></script>
     <script src="{{ STATIC_URL }}js/bootstrap-typeahead.js"></script>
+    <script src="{{ STATIC_URL }}js/main.js"></script>
     <script>
       !function ($) {
         $(function(){
