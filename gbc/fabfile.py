@@ -14,8 +14,9 @@ env.project_root = '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc'
 env.repo = 'https://github.com/kiwiholmberg/gbc.git'
 
 def deploy(sql='no'):
+    remove_settings()
     git_pull()
-    settings()
+    production_settings()
     collect_static()
     if sql == 'yes':
         print 'Running sql script'
@@ -28,7 +29,9 @@ def collect_static():
 
 def restart_server():
     with cd(env.project_root):
-        sudo('/opt/local/apache2/bin/apachectl restart')
+        sudo('/opt/local/apache2/bin/apachectl stop')
+        sleep(4)
+        sudo('/opt/local/apache2/bin/apachectl start')
 
 def git_pull():
     with cd(env.project_root):
@@ -39,7 +42,11 @@ def db_changes():
         run('cp gbc/db/gbc_db gbc/db/gbc_db_'+str(time.time())) #backup
         run('sqlite3 gbc/db/gbc_db < gbc/change.sql')
 
-def settings():
+def production_settings():
+    with cd(env.project_root):
+        run('rm gbc/gbc/settings.py')
+        run('cp gbc/gbc/settings-production.py gbc/gbc/settings.py')
+
+def remove_settings():
     with cd(env.project_root):
         run('mv gbc/gbc/settings.py gbc/gbc/settings'+ str(time.time()) + '.py')
-        run('cp gbc/gbc/settings-production.py gbc/gbc/settings.py')
