@@ -4,10 +4,10 @@ from core.models import Slide, Tile, Menu_item, Featurette
 
 
 def home(request):
-    slides = Slide.objects.all()
-    tiles = Tile.objects.all()
-    menu_items = Menu_item.objects.all()
-    featurettes = Featurette.objects.all()
+    slides = Slide.objects.all().order_by('order')
+    tiles = Tile.objects.all().order_by('order')
+    menu_items = Menu_item.objects.all().order_by('order')
+    featurettes = Featurette.objects.all().order_by('order')
 
     lang = request.COOKIES.get('language', 'sv')
     return render(request, 'index.html', {  'STATIC_URL': settings.STATIC_URL, 

@@ -7,6 +7,8 @@ import time
 env.hosts = ['kiwifoto.se']
 env.user = 'ikiwi'
 env.key_filename = '~/.ssh/kiwi/kiwi_rsa'
+env.warn_only=False
+
 
 # Where your project code lives on the server
 env.project_root = '/Library/WebServer/Documents/gbc.kiwifoto.se/gbc'
@@ -30,7 +32,7 @@ def collect_static():
 def restart_server():
     with cd(env.project_root):
         sudo('/opt/local/apache2/bin/apachectl stop')
-        sleep(4)
+        time.sleep(4)
         sudo('/opt/local/apache2/bin/apachectl start')
 
 def git_pull():
@@ -40,13 +42,19 @@ def git_pull():
 def db_changes():
     with cd(env.project_root):
         run('cp gbc/db/gbc_db gbc/db/gbc_db_'+str(time.time())) #backup
+        print 'Backup done.'
         run('sqlite3 gbc/db/gbc_db < gbc/change.sql')
+        print 'Database changes completed.'
 
 def production_settings():
     with cd(env.project_root):
+        env.warn_only=True
         run('rm gbc/gbc/settings.py')
+        env.warn_only=False
         run('cp gbc/gbc/settings-production.py gbc/gbc/settings.py')
 
 def remove_settings():
     with cd(env.project_root):
+        env.warn_only=True
         run('mv gbc/gbc/settings.py gbc/gbc/settings'+ str(time.time()) + '.py')
+        env.warn_only=False

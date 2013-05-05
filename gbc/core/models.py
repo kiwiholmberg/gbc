@@ -11,6 +11,7 @@ class Slide(models.Model):
     link = models.CharField(max_length=256, help_text='ie. "http://gbc.se/events" or just "/event/1"', blank=True,null=True )
     link_text_sv = models.CharField(max_length=64, help_text='Text for the button/link', blank=True,null=True)
     link_text_en = models.CharField(max_length=64, help_text='Text for the button/link', blank=True,null=True)
+    order = models.IntegerField(default=99)
 
     def __unicode__(self):
         return self.title_sv
@@ -28,7 +29,7 @@ class Tile(models.Model):
     link_text_sv = models.CharField(max_length=64, help_text='Text for the button/link', blank=True, null=True)
     link_text_en = models.CharField(max_length=64, help_text='Text for the button/link', blank=True, null=True)
     image_format = models.CharField(max_length=2, choices=IMAGE_FORMAT, default='C')
-
+    order = models.IntegerField(default=99)
     def __unicode__(self):
         return self.title_sv
 
@@ -42,6 +43,7 @@ class Featurette(models.Model):
     content_en = models.TextField(max_length=512, blank=True, null=True)
     image = models.ImageField(upload_to='featurettes', help_text='Dimensions: 512x512px')
     link = models.CharField(max_length=256, help_text='ie. "http://gbc.se/event/1" or just "/event/1"', blank=True, null=True)
+    order = models.IntegerField(default=99)
 
     def __unicode__(self):
         return self.title_sv + ' ' + self.subtitle_sv
@@ -61,6 +63,7 @@ class Sponsor(models.Model):
     description_en = models.CharField(max_length=512, help_text="Optional description", blank=True, null=True)
     image = models.ImageField(upload_to='sponsor', help_text='')
     link = models.CharField(max_length=256, help_text='ie. "http://www.5d.se" ', blank=True, null=True)
+    order = models.IntegerField(default=99)
 
     def __unicode__(self):
         return self.title_sv
