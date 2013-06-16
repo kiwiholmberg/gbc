@@ -20,4 +20,6 @@ urlpatterns = patterns('',
     url(r'^admin_tools/', include('admin_tools.urls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'core.views.home', name='home'),
+    url(r'^newsletter$', 'core.api.newsletter_signup', name='newsletter_signup' ),
+
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

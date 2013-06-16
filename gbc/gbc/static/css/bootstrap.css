@@ -6189,3 +6189,6 @@ a.badge:focus {
   width: 32px;
   position: relative;
 }
+.newsletter-error, .newsletter-signedup, .newsletter-already {
+  display: none;
+}

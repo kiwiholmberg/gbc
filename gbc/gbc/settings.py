@@ -143,10 +143,13 @@ INSTALLED_APPS = (
     'admin_tools.menu',
     'admin_tools.dashboard',    
     'django.contrib.admin',
+    'mailsnake',
     'core',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+MAILCHIMP_KEY = '249569f73746d4e32da66c14eb88f250-us7'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

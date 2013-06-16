@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% load thumbnail %}
+{% load custom_tags %}
 
 {% block main %}
+{% csrf_token %}
 <div class="container marketing">
 
       <!-- Three columns of text below the carousel -->
@@ -45,11 +47,12 @@
         <h2 class="featurette-heading">
           {% if lang == 'en' %}
             {{ featurette.title_en }} <span class="muted">{{ featurette.subtitle_en }}</span></h2>
-            <p class="lead">{{ featurette.content_en|linebreaksbr|urlize }}</p>
+            <p class="lead">{{ featurette.content_en|linebreaksbr|urlize|newsletter_form_en }}</p>
           {% else %}
             {{ featurette.title_sv }} <span class="muted">{{ featurette.subtitle_sv }}</span></h2>
-            <p class="lead">{{ featurette.content_sv|linebreaksbr|urlize }}</p>
+            <p class="lead">{{ featurette.content_sv|linebreaksbr|urlize|newsletter_form_sv }}</p>
           {% endif %}
+          
       </div>
       <hr class="featurette-divider">
       {% endfor %}
