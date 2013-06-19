@@ -16,7 +16,8 @@
             <img class="img-circle" src="{{ tile.image|thumbnail_url:'tile-circle' }}">
           {% endif %}
           <h2>{%if lang == 'en'%}{{ tile.title_en }} {% else %}{{ tile.title_sv }}{%endif%}</h2>
-          <p>{%if lang == 'en'%}{{ tile.content_en|linebreaksbr }} {% else %}{{ tile.content_sv|linebreaksbr}}{%endif%}</p>
+          <p>{%if lang == 'en'%}{{ tile.content_en|linebreaksbr|newsletter_form_en }} 
+            {% else %}{{ tile.content_sv|linebreaksbr|newsletter_form_sv }}{%endif%}</p>
           {% if tile.link != '' and tile.link != '#' or tile.link_file %}
           <p><a class="btn" href="{% if tile.link_file %}{{ tile.link_file.url }}{% else %}{{ tile.link }}{% endif %}">
             {% if lang == 'en' %}
