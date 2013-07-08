@@ -59,8 +59,8 @@ class Menu_item(models.Model):
 class Sponsor(models.Model):
     title_sv = models.CharField(max_length=128, help_text="Sponsor name")
     title_en = models.CharField(max_length=128, help_text="Sponsor name", blank=True, null=True)
-    description_sv = models.CharField(max_length=512, help_text="Optional description", blank=True, null=True)
-    description_en = models.CharField(max_length=512, help_text="Optional description", blank=True, null=True)
+    #description_sv = models.CharField(max_length=512, help_text="Optional description", blank=True, null=True)
+    #description_en = models.CharField(max_length=512, help_text="Optional description", blank=True, null=True)
     image = models.ImageField(upload_to='sponsor', help_text='')
     link = models.CharField(max_length=256, help_text='ie. "http://www.5d.se" ', blank=True, null=True)
     order = models.IntegerField(default=99)

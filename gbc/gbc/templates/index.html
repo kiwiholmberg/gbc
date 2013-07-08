@@ -53,9 +53,22 @@
             {{ featurette.title_sv }} <span class="muted">{{ featurette.subtitle_sv }}</span></h2>
             <p class="lead">{{ featurette.content_sv|linebreaksbr|urlize|newsletter_form_sv }}</p>
           {% endif %}
-          
       </div>
       <hr class="featurette-divider">
       {% endfor %}
       <!-- /END THE FEATURETTES -->
+      <!-- START SPONSORS -->
+      
+      <div class="row sponsors">
+        <h1>{% if lang == 'en' %}Sponsors{% else %}Sponsorer{% endif %}</h1>
+        {% for sponsor in sponsors %}
+        <div class="span4">
+          <a href="{{ sponsor.link }}" target="_blank">
+            <img src="{{ sponsor.image|thumbnail_url:'featurette' }}" />
+          </a>
+        </div>
+        {% endfor %}
+      </div>
+      <hr>
+      <!-- /SPONSORS -->
 {% endblock %}
