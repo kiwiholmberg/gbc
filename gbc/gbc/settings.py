@@ -127,7 +127,7 @@ THUMBNAIL_ALIASES = {
         'tile-rectangle': {'size': (360, 150), 'crop': True},
         'tile-circle': {'size': (140, 140), 'crop': True},
         'featurette': {'size': (512, 512), 'crop': True},
-        'sponsor': {'size': (360,360), 'crop': False},
+        'sponsor': {'size': (270,270), 'crop': False},
     },
 }
 

@@ -6195,3 +6195,6 @@ a.badge:focus {
 .sponsors h2 {
   margin: -25px 0 30px 30px;
 }
+.sponsors .span3 {
+  text-align: center;
+}

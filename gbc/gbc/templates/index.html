@@ -62,7 +62,7 @@
       <div class="row sponsors">
         <h2>{% if lang == 'en' %}Our partners{% else %}Våra partners{% endif %}</h2>
         {% for sponsor in sponsors %}
-        <div class="span4">
+        <div class="span3">
           <a href="{{ sponsor.link }}" target="_blank">
             <img src="{{ sponsor.image|thumbnail_url:'sponsor' }}" />
           </a>
